@@ -1,0 +1,22 @@
+{
+  "name": "my-blog-2022-06-27",
+  "version": "1.0.0",
+  "private": true,
+  "description": "my-blog-2022-06-27",
+  "author": "nunusmohum",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^4.17.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
