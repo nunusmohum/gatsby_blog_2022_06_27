@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import React from "react";
 
 import {
@@ -7,12 +7,25 @@ import {
   navLinks,
   navLinkItem,
   navLinkText,
-} from "./Layout.module.css";
+  siteTitle,
+} from "./layout.module.css";
 
 function Layout({ pageTitle, children }) {
+  const data = useStaticQuery(graphql`
+    query MyQuery1 {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
   return (
     <div className={container}>
-      <title>{pageTitle}</title>
+      <title>
+        {pageTitle} | {data.site.siteMetadata.title}
+      </title>
+      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
@@ -25,6 +38,11 @@ function Layout({ pageTitle, children }) {
               About
             </Link>
           </li>
+          <li className={navLinkItem}>
+            <Link className={navLinkText} to="/blog">
+              Blog
+            </Link>
+          </li>
         </ul>
       </nav>
 
@@ -33,7 +51,7 @@ function Layout({ pageTitle, children }) {
         {children}
       </main>
 
-      <div>Copyright All Rights</div>
+      <div>ⓒ 2022. Backend-school Lee Juwon</div>
     </div>
   );
 }
